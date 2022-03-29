@@ -3,8 +3,7 @@
 <head>
 <title>Booklist add</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
-	th:href="@{css/bootstrap.min.css}" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
 	<h1>Add book</h1>
@@ -32,7 +31,7 @@
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
 			<label for="categorylist">Choose category:</label>
-				<select id="categorylist" th:field="*{category}">
+				<select id="categorylist" th:field="*{category}" class="form-control">
 				  <option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.name}"></option>
 				</select>
 				<div style="clear: both; display: block; height: 10px;"></div>

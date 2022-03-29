@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -32,6 +33,18 @@ public class BookstoreController {
 		model.addAttribute("books", brepository.findAll());
 		model.addAttribute("categories", crepository.findAll());
 		return "booklist";
+	}
+	
+	//Login mapping for Bookstore
+	@RequestMapping(value="/login")
+	public String login() {
+		return "login";
+	}
+	
+	//Index mainpage/starterpage
+	@RequestMapping(value={"/", "/index"})
+	public String indexSecure() {
+		return "index";
 	}
 
 	//Restful service for bookstore, FindAll books
@@ -75,6 +88,7 @@ public class BookstoreController {
 	}
 
 	//Booklist deleteBook
+    @PreAuthorize("hasAuthority('ADMIN')")
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteBook(@PathVariable("id") Long bookId, Model model) {
 		brepository.deleteById(bookId);
