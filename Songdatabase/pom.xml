@@ -8,11 +8,11 @@
 		<version>2.6.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>HH-Palvelinohjelmointi</groupId>
-	<artifactId>Song_database</artifactId>
+	<groupId>hhpalvelinohjelmointi</groupId>
+	<artifactId>Songdatabase</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Song_database</name>
-	<description>Palvelinohjelmointi Harjoitustyö</description>
+	<name>Songdatabase</name>
+	<description>Song database harjoitustyö palvelinohjelmointikurssille</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -30,10 +30,6 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webflux</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.thymeleaf.extras</groupId>
 			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
 		</dependency>
@@ -45,13 +41,13 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-			<groupId>io.projectreactor</groupId>
-			<artifactId>reactor-test</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
