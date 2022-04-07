@@ -1,13 +1,16 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Booklist add</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+	<title>Song add</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+		<link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
 </head>
 <body>
-	<h1>Add book</h1>
-	<div>
+	<div id="h1div" class="d-flex justify-content-center">
+		<h1>Add song</h1>
+	</div>
+	<div id="editformdiv" class="d-flex justify-content-center">
 		<form th:object="${song}" th:action="@{savesong}" action="#"
 			method="post">
 			<label for="songtitle">Song Title</label> <input type="text"
@@ -32,10 +35,8 @@
 			</select>
 			<div style="clear: both; display: block; height: 10px;"></div>
 				
-			<input type="submit" value="Save" class="btn btn-success"></input>
+			<input type="submit" value="Save" class="btn btn-success"></input><a href="/listsongs"  class="btn btn-primary" id="returnbutton">Return</a>
 		</form>
-		<div style="clear: both; display: block; height: 10px;"></div>
-		<a href="/songlist" class="btn btn-secondary">Return</a>
 	</div>
 </body>
 </html>

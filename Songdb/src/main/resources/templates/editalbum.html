@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Album list edit</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+	<link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
+</head>
+<body>
+	<div>
+		<div id="h1div" class="d-flex justify-content-center">
+			<h1>Edit album</h1>
+		</div>
+		<div id="editformdiv" class="d-flex justify-content-center">
+			<form th:object="${album}" th:action="@{savealbum}" action="#" method="post">
+				<label for="albumid"></label> <input type="hidden" id="albumid" th:field="*{albumid}" />
+				<div style="clear: both; display: block; height: 10px;"></div>
+	
+				<label for="albumname">Album Name</label> <input type="text" id="albumname" th:field="*{name}" />
+				<div style="clear: both; display: block; height: 10px;"></div>
+	
+				<label for="albumartist">Album Artist</label> <input type="text" id="albumartist" th:field="*{artist}" />
+				<div style="clear: both; display: block; height: 10px;"></div>
+	
+				<label for="albumgenre">Album genre</label> <input type="text" th:field="*{genre}" />
+				<div style="clear: both; display: block; height: 10px;"></div>
+	
+				<label for="releaseyear">Release Year</label> <input type="text" th:field="*{releaseyear}" />
+				<div style="clear: both; display: block; height: 10px;"></div>
+				
+				<input type="submit" value="Save Album" class="btn btn-success"></input><a href="/listsongs" class="btn btn-primary" id="returnbutton">Return</a>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

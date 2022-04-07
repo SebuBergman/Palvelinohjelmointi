@@ -1,27 +1,35 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Albumlist</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
-	th:href="@{css/bootstrap.min.css}" />
+	<title>Albumlist</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+	<link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
 </head>
 <body>
-	<h1>Albums</h1>
-	<table class="table table-striped">
-		<tr>
-			<th>Name</th>
-			<th>Artist</th>
-			<th>Genre</th>
-			<th>Release Year</th>
-		</tr>
-		<tr th:each="album : ${albums}">
-			<td th:text="${album.name}"></td>
-			<td th:text="${album.artist}"></td>
-			<td th:text="${album.genre}"></td>
-			<td th:text="${album.releaseyear}"></td>
-		</tr>
-	</table>
-	<a href="/addalbum" class="btn btn-dark">Add Album</a>
+	<div class="container">
+		<div class="col-md-4">
+			<h1>Albums</h1>
+		</div>
+		<table class="table table-striped">
+			<tr>
+				<th>Name</th>
+				<th>Artist</th>
+				<th>Genre</th>
+				<th>Release Year</th>
+				<th></th>
+				<th></th>
+			</tr>
+			<tr th:each="album : ${albums}">
+				<td th:text="${album.name}"></td>
+				<td th:text="${album.artist}"></td>
+				<td th:text="${album.genre}"></td>
+				<td th:text="${album.releaseyear}"></td>
+				<td><a th:href="@{/albumedit{id}(id=${album.albumid})}" class="btn btn-primary">Edit</a></td>
+				<td> <!---sec:authorize="hasAuthority('ADMIN')"---> <a th:href="@{/albumdelete/{id}(id=${album.albumid})}" class="btn btn-xs btn-danger">Delete</a></td>
+			</tr>
+		</table>
+		<a href="/addalbum" class="btn btn-dark">Add Album</a>
+	</div>
 </body>
 </html>

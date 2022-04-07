@@ -1,39 +1,42 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Songlist edit</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
-<link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
+	<title>Songlist edit</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+	<link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
 </head>
 <body>
-	<div class="d-flex p-2">
-		<h1>Edit song</h1>
-		<form th:object="${song}" th:action="@{savesong}" action="#" method="post">
-			<label for="songid"></label> <input type="hidden" id="songid" th:field="*{id}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-
-			<label for="songtitle">Song Title</label> <input type="text" id="songtitle" th:field="*{title}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-
-			<label for="songgenre">Song Genre</label> <input type="text" id="songgenre" th:field="*{genre}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-
-			<label for="songlength">Length</label> <input type="text" th:field="*{length}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-
-			<label for="songwriter">Songwriter</label> <input type="text" th:field="*{songwriter}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			
-			<label for="albumlist">Choose album:</label>
-			<select id="albumlist" th:field="*{album}" class="form-control">
-				<option th:each="album: ${albums}" th:value="${album.albumid}" th:text="${album.name}"></option>
-			</select>
-			<div style="clear: both; display: block; height: 10px;"></div>
-			
-			<input type="submit" value="Save Song" class="btn btn-success"></input>
-		</form>
-		<a href="/listsongs" class="btn btn-primary">Return</a>
+	<div>
+		<div id="h1div" class="d-flex justify-content-center">
+			<h1>Edit song</h1>
+		</div>
+		<div id="editformdiv" class="d-flex justify-content-center">
+			<form th:object="${song}" th:action="@{savesong}" action="#" method="post">
+				<label for="songid"></label> <input type="hidden" id="songid" th:field="*{id}" />
+				<div style="clear: both; display: block; height: 10px;"></div>
+	
+				<label for="songtitle">Song Title</label> <input type="text" id="songtitle" th:field="*{title}" />
+				<div style="clear: both; display: block; height: 10px;"></div>
+	
+				<label for="songgenre">Song Genre</label> <input type="text" id="songgenre" th:field="*{genre}" />
+				<div style="clear: both; display: block; height: 10px;"></div>
+	
+				<label for="songlength">Length</label> <input type="text" th:field="*{length}" />
+				<div style="clear: both; display: block; height: 10px;"></div>
+	
+				<label for="songwriter">Songwriter</label> <input type="text" th:field="*{songwriter}" />
+				<div style="clear: both; display: block; height: 10px;"></div>
+				
+				<label for="albumlist">Choose album:</label>
+				<select id="albumlist" th:field="*{album}" class="form-control">
+					<option th:each="album: ${albums}" th:value="${album.albumid}" th:text="${album.name}"></option>
+				</select>
+				<div style="clear: both; display: block; height: 10px;"></div>
+				
+				<input type="submit" value="Save Song" class="btn btn-success"></input><a href="/listsongs" class="btn btn-primary" id="returnbutton">Return</a>
+			</form>
+		</div>
 	</div>
 </body>
 </html>

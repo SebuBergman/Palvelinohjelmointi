@@ -1,9 +1,21 @@
 @charset "UTF-8";
 #albumlist {
-	width: 200px;
+	width: 250px;
 }
 
 .divcentering {
 	margin: auto;
-	
+}
+
+#h1div {
+	padding: 5px;
+	padding-top: 20px;
+}
+
+#editformdiv {
+	padding: 10px;
+}
+
+#returnbutton {
+	margin: 10px;
 }

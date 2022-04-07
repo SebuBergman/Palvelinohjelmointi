@@ -4,6 +4,7 @@
 	<title>Songlist</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+	<link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
 </head>
 <body>
 	<div class="container">
@@ -34,11 +35,11 @@
 				<td th:text="${song.length}"></td>
 				<td th:text="${song.songwriter}"></td>
 				<td th:text="${song.album.name}"></td>
-				<td><a th:href="@{/edit{id}(id=${song.id})}" class="btn btn-primary">Edit</a></td>
-				<td> <!---sec:authorize="hasAuthority('ADMIN')"---> <a th:href="@{/delete/{id}(id=${song.id})}" class="btn btn-xs btn-danger">Delete</a></td>
+				<td><a th:href="@{/songedit{id}(id=${song.id})}" class="btn btn-primary">Edit</a></td>
+				<td> <!---sec:authorize="hasAuthority('ADMIN')"---> <a th:href="@{/songdelete/{id}(id=${song.id})}" class="btn btn-xs btn-danger">Delete</a></td>
 			</tr>
 		</table>
-		<a href="/add" class="btn btn-primary">Add Song</a>
+		<a href="/addsong" class="btn btn-primary">Add Song</a>
 	</div> 
 </body>
 </html>

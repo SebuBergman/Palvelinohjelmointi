@@ -24,14 +24,6 @@ public class SongController {
 	@Autowired
 	AlbumRepository albumrepository;
 	
-	//Songs, Show all songs
-	@RequestMapping(value="/listsongs")
-	public String songlist(Model model) {
-		model.addAttribute("songs", songrepository.findAll());
-		model.addAttribute("albums", albumrepository.findAll());
-		return "songlist";
-	}
-	
 	/*
 	//Login mapping for Songdb
 	@RequestMapping(value="/login")
@@ -46,52 +38,62 @@ public class SongController {
 		return "welcomepage";
 	}
 	
-	//Restful service. Show all songs aka FindAll songs
-	@RequestMapping(value="/songs", method = RequestMethod.GET)
-	public @ResponseBody List<Song> songListRest() {
-		return (List<Song>) songrepository.findAll();
-	}
+	//Restful services
+		//Restful service. Show all songs aka FindAll songs
+		@RequestMapping(value="/songs", method = RequestMethod.GET)
+		public @ResponseBody List<Song> songListRest() {
+			return (List<Song>) songrepository.findAll();
+		}
+		
+		//Restful service for song database, FindById
+		@RequestMapping(value = "/songs/{id}", method = RequestMethod.GET)
+		public @ResponseBody Optional<Song> findSongRest(@PathVariable("id") Long songId) {
+			return songrepository.findById(songId);
+		}
+		
+		//Restful service, Save Song
+		@RequestMapping(value="/songs", method = RequestMethod.POST)
+		public @ResponseBody Song saveSongRest(@RequestBody Song song) {
+			return songrepository.save(song);
+		}
 	
-	//Restful service for song database, FindById
-	@RequestMapping(value = "/songs/{id}", method = RequestMethod.GET)
-	public @ResponseBody Optional<Song> findSongRest(@PathVariable("id") Long songId) {
-		return songrepository.findById(songId);
-	}
-	
-	//Restful service, Save Song
-	@RequestMapping(value="/song", method = RequestMethod.POST)
-	public @ResponseBody Song saveSongRest(@RequestBody Song song) {
-		return songrepository.save(song);
-	}
-	
-	//Song database addSong
-	@RequestMapping(value= "/add")
-	public String addSong(Model model) {
-		model.addAttribute("song", new Song());
-		model.addAttribute("albums", albumrepository.findAll());
-		return "addsong";
-	}
-	
-	//Song database saveSong
-	@RequestMapping(value ="savesong", method = RequestMethod.POST)
-	public String save(Song song) {
-		songrepository.save(song);
-		return "redirect:listsongs";
-	}
-	
-	//Song database editSong details
-	@RequestMapping(value = "/edit{id}", method = RequestMethod.GET)
-	public String editSong(@PathVariable("id") Long songId, Model model) {
-		model.addAttribute("song", songrepository.findById(songId));
-		model.addAttribute("albums", albumrepository.findAll());
-		return "editsong";
-	}
-	
-	//Song database deleteSong from database
-	//@PreAuthorize("hasAuthority('admin')")
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	public String deleteSong(@PathVariable("id") Long songId, Model model) {
-		songrepository.deleteById(songId);
-		return"redirect:../listsongs";
-	}
+	//All of the endpoints
+		//Songs, Show all songs
+		@RequestMapping(value="/listsongs")
+		public String songlist(Model model) {
+			model.addAttribute("songs", songrepository.findAll());
+			model.addAttribute("albums", albumrepository.findAll());
+			return "songlist";
+		}
+		
+		//Song database addSong
+		@RequestMapping(value= "/addsong")
+		public String addSong(Model model) {
+			model.addAttribute("song", new Song());
+			model.addAttribute("albums", albumrepository.findAll());
+			return "addsong";
+		}
+		
+		//Song database saveSong
+		@RequestMapping(value ="savesong", method = RequestMethod.POST)
+		public String save(Song song) {
+			songrepository.save(song);
+			return "redirect:listsongs";
+		}
+		
+		//Song database editSong details
+		@RequestMapping(value = "/songedit{id}", method = RequestMethod.GET)
+		public String editSong(@PathVariable("id") Long songId, Model model) {
+			model.addAttribute("song", songrepository.findById(songId));
+			model.addAttribute("albums", albumrepository.findAll());
+			return "editsong";
+		}
+		
+		//Song database deleteSong from database
+		//@PreAuthorize("hasAuthority('admin')")
+		@RequestMapping(value = "/songdelete/{id}", method = RequestMethod.GET)
+		public String deleteSong(@PathVariable("id") Long songId, Model model) {
+			songrepository.deleteById(songId);
+			return"redirect:../listsongs";
+		}
 }
