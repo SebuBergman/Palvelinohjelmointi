@@ -19,9 +19,30 @@ public class Album {
 	private String genre;
 	private int releaseyear;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "album")
 	private List<Song> songs;
 
+	public Album() {
+		super();
+	}
+	
+	public Album(String title, String artist, String genre, int releaseyear) {
+		super();
+		this.title = title;
+		this.artist = artist;
+		this.genre = genre;
+		this.releaseyear = releaseyear;
+	}
+	
+	public Album(Long albumid, String title, String artist, String genre, int releaseyear) {
+		super();
+		this.albumid = albumid;
+		this.title = title;
+		this.artist = artist;
+		this.genre = genre;
+		this.releaseyear = releaseyear;
+	}
+	
 	public Album(Long albumid, String title, String artist, String genre, int releaseyear, List<Song> songs) {
 		super();
 		this.albumid = albumid;
@@ -30,10 +51,6 @@ public class Album {
 		this.genre = genre;
 		this.releaseyear = releaseyear;
 		this.songs = songs;
-	}
-
-	public Album() {
-		super();
 	}
 
 	public Long getAlbumid() {

@@ -12,14 +12,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.ui.Model;
 
 import hhpalvelinohjelmointi.Songdatabase.domain.AlbumRepository;
 import hhpalvelinohjelmointi.Songdatabase.domain.Song;
 import hhpalvelinohjelmointi.Songdatabase.domain.SongRepository;
 
 @Controller
-public class SongdatabaseController {
+public class SongController {
 	@Autowired
 	private SongRepository songrepository;
 	

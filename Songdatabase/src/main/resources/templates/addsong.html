@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Booklist add</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<h1>Add book</h1>
+	<div>
+		<form th:object="${song}" th:action="@{savesong}" action="#"
+			method="post">
+			<label for="songtitle">Title</label> <input type="text"
+				id="songtitle" th:field="*{title}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+			<label for="genre">Author</label> <input type="text" id="authorname"
+				th:field="*{genre}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+			<label for="length">Year</label> <input type="text"
+				th:field="*{length}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+			<label for="songwriter">ISBN</label> <input type="text"
+				th:field="*{songwriter}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+			<input type="submit" value="Save" class="btn btn-success"></input>
+		</form>
+		<div style="clear: both; display: block; height: 10px;"></div>
+		<a href="/booklist" class="btn btn-secondary">Return</a>
+	</div>
+</body>
+</html>

@@ -24,6 +24,27 @@ public class Song {
 	@JoinColumn(name = "albumid")
 	private Album album;
 	
+	public Song() {
+		super();
+	}
+	
+	public Song(String title, String genre, double length, String songwriter) {
+		super();
+		this.title = title;
+		this.genre = genre;
+		this.length = length;
+		this.songwriter = songwriter;
+	}
+	
+	public Song(String title, String genre, double length, String songwriter, Album album) {
+		super();
+		this.title = title;
+		this.genre = genre;
+		this.length = length;
+		this.songwriter = songwriter;
+		this.album = album;
+	}
+
 	public Song(Long id, String title, String genre, double length, String songwriter) {
 		super();
 		this.id = id;
@@ -31,10 +52,6 @@ public class Song {
 		this.genre = genre;
 		this.length = length;
 		this.songwriter = songwriter;
-	}
-
-	public Song() {
-		super();
 	}
 
 	public Long getId() {
@@ -77,9 +94,19 @@ public class Song {
 		this.songwriter = songwriter;
 	}
 
+	public Album getAlbum() {
+		return album;
+	}
+
+	public void setAlbum(Album album) {
+		this.album = album;
+	}
+
 	@Override
 	public String toString() {
-		return "Song [id=" + id + ", title=" + title + ", genre=" + genre + ", length=" + length + ", songwriter="
-				+ songwriter + "]";
+		if (this.album != null)
+			return "Song [id=" + id + ", title=" + title + ", genre=" + genre + ", length=" + length + ", songwriter=" + songwriter + " album" + this.getAlbum() + "]";
+		else
+			return "Song [id=" + id + ", title=" + title + ", genre=" + genre + ", length=" + length + ", songwriter=" + songwriter + "]";
 	}
 }
