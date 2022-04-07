@@ -1,4 +1,4 @@
-package hhpalvelinohjelmointi.Songdatabase.domain;
+package hhpalvelinohjelmointi.Songdb.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +20,7 @@ public class Song {
 	private String songwriter;
 	
 	@ManyToOne
-	@JsonIgnoreProperties ("songs")
+	@JsonIgnoreProperties("songs")
 	@JoinColumn(name = "albumid")
 	private Album album;
 	

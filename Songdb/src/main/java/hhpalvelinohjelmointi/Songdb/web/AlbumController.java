@@ -1,4 +1,4 @@
-package hhpalvelinohjelmointi.Songdatabase.web;
+package hhpalvelinohjelmointi.Songdb.web;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import hhpalvelinohjelmointi.Songdatabase.domain.Album;
-import hhpalvelinohjelmointi.Songdatabase.domain.AlbumRepository;
+import hhpalvelinohjelmointi.Songdb.domain.Album;
+import hhpalvelinohjelmointi.Songdb.domain.AlbumRepository;
 
 @CrossOrigin
 @Controller
@@ -23,9 +23,9 @@ public class AlbumController {
 	private AlbumRepository albumrepository;
 	
 	//Albumlist findAll
-	@RequestMapping("albumlist")
+	@RequestMapping("/albumlist")
 	public String albumlist(Model model) {
-		model.addAttribute("album", albumrepository.findAll());
+		model.addAttribute("albums", albumrepository.findAll());
 		return "albumlist";
 	}
 	
@@ -37,27 +37,27 @@ public class AlbumController {
 	}
 	
 	//Albumlist saveCategory
-	@RequestMapping(value = "/savecategory", method = RequestMethod.POST)
+	@RequestMapping(value = "/savealbum", method = RequestMethod.POST)
 	public String save(Album album) {
 		albumrepository.save(album);
-		return "redirect:categorylist";
+		return "redirect:albumlist";
 	}
 		
 	// RESTful service, Album findAll
-	@RequestMapping(value="/categories", method = RequestMethod.GET)
-	public @ResponseBody List<Album> getDepartmentsRest() {	
+	@RequestMapping(value="/albums", method = RequestMethod.GET)
+	public @ResponseBody List<Album> getAlbumRest() {	
 		return (List<Album>) albumrepository.findAll();
 	}
 	
 	// RESTful service, Album findById
-	@RequestMapping(value="/categories/{id}", method = RequestMethod.GET)
-	public @ResponseBody Optional<Album> findDepartmentRest(@PathVariable("id") Long dId) {	
-		return albumrepository.findById(dId);
+	@RequestMapping(value="/albums/{id}", method = RequestMethod.GET)
+	public @ResponseBody Optional<Album> findAlbumRest(@PathVariable("id") Long albumId) {	
+		return albumrepository.findById(albumId);
 	}
 	
 	// RESTful service, Save albums
-	@RequestMapping(value="/categories", method = RequestMethod.POST)
-	public @ResponseBody Album saveStudentRest(@RequestBody Album album) {	
+	@RequestMapping(value="/albums", method = RequestMethod.POST)
+	public @ResponseBody Album saveAlbumRest(@RequestBody Album album) {	
 		return albumrepository.save(album);
 	}
 }

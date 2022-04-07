@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Category add</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<h1>Add Category</h1>
+	<div>
+		<form th:object="${album}" th:action="@{savealbum}" action="#" method="post">
+			<label for="albumname">Name</label> <input type="text" id="albumname" th:field="*{name}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="artist">Artist</label> <input type="text" th:field="*{artist}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="albumgenre">Genre</label> <input type="text" th:field="*{genre}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="albumreleaseyear">Categories</label> <input type="text" th:field="*{releaseyear}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<input type="submit" value="Save" class="btn btn-success"></input>
+		</form>
+		<a href="/albumlist" class="btn btn-secondary">Return</a>
+	</div>
+</body>
+</html>

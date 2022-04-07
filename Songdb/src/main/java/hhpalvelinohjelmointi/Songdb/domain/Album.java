@@ -1,4 +1,4 @@
-package hhpalvelinohjelmointi.Songdatabase.domain;
+package hhpalvelinohjelmointi.Songdb.domain;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class Album {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long albumid;
-	private String title;
+	private String name;
 	private String artist;
 	private String genre;
 	private int releaseyear;
@@ -26,27 +26,27 @@ public class Album {
 		super();
 	}
 	
-	public Album(String title, String artist, String genre, int releaseyear) {
+	public Album(String name, String artist, String genre, int releaseyear) {
 		super();
-		this.title = title;
+		this.name = name;
 		this.artist = artist;
 		this.genre = genre;
 		this.releaseyear = releaseyear;
 	}
 	
-	public Album(Long albumid, String title, String artist, String genre, int releaseyear) {
+	public Album(Long albumid, String name, String artist, String genre, int releaseyear) {
 		super();
 		this.albumid = albumid;
-		this.title = title;
+		this.name = name;
 		this.artist = artist;
 		this.genre = genre;
 		this.releaseyear = releaseyear;
 	}
 	
-	public Album(Long albumid, String title, String artist, String genre, int releaseyear, List<Song> songs) {
+	public Album(Long albumid, String name, String artist, String genre, int releaseyear, List<Song> songs) {
 		super();
 		this.albumid = albumid;
-		this.title = title;
+		this.name = name;
 		this.artist = artist;
 		this.genre = genre;
 		this.releaseyear = releaseyear;
@@ -57,8 +57,8 @@ public class Album {
 		return albumid;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getName() {
+		return name;
 	}
 
 	public String getArtist() {
@@ -73,16 +73,12 @@ public class Album {
 		return releaseyear;
 	}
 
-	public List<Song> getSongs() {
-		return songs;
-	}
-
 	public void setAlbumid(Long albumid) {
 		this.albumid = albumid;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public void setArtist(String artist) {
@@ -96,6 +92,10 @@ public class Album {
 	public void setReleaseyear(int releaseyear) {
 		this.releaseyear = releaseyear;
 	}
+	
+	public List<Song> getSongs() {
+		return songs;
+	}
 
 	public void setSongs(List<Song> songs) {
 		this.songs = songs;
@@ -103,7 +103,7 @@ public class Album {
 
 	@Override
 	public String toString() {
-		return "Album [albumid=" + albumid + ", title=" + title + ", artist=" + artist + ", genre=" + genre + ", releaseyear="
-				+ releaseyear + ", songs=" + songs + "]";
+		return "Album [albumid=" + albumid + ", name=" + name + ", artist=" + artist + ", genre=" + genre
+				+ ", releaseyear=" + releaseyear + ", songs=" + songs + "]";
 	}
 }

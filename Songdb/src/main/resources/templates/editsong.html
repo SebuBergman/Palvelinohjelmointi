@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Songlist edit</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<h1>Edit song</h1>
+	<div>
+		<form th:object="${song}" th:action="@{savesong}" action="#" method="post">
+			<label for="songid"></label> <input type="hidden" id="songid" th:field="*{id}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+			<label for="songtitle">Title</label> <input type="text" id="songtitle" th:field="*{title}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+			<label for="songgenre">Genre</label> <input type="text" id="songgenre" th:field="*{genre}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+			<label for="songlength">Length</label> <input type="text" th:field="*{length}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+			<label for="songwriter">Songwriter</label> <input type="text" th:field="*{songwriter}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<input type="submit" value="Save Song" class="btn btn-success"></input>
+		</form>
+		<a href="/songlist" class="btn btn-secondary">Return</a>
+	</div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package hhpalvelinohjelmointi.Songdatabase.web;
+package hhpalvelinohjelmointi.Songdb.web;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import hhpalvelinohjelmointi.Songdatabase.domain.AlbumRepository;
-import hhpalvelinohjelmointi.Songdatabase.domain.Song;
-import hhpalvelinohjelmointi.Songdatabase.domain.SongRepository;
+import hhpalvelinohjelmointi.Songdb.domain.AlbumRepository;
+import hhpalvelinohjelmointi.Songdb.domain.Song;
+import hhpalvelinohjelmointi.Songdb.domain.SongRepository;
 
 @Controller
 public class SongController {
@@ -29,9 +29,17 @@ public class SongController {
 	@RequestMapping(value="/listsongs")
 	public String songlist(Model model) {
 		model.addAttribute("songs", songrepository.findAll());
-		model.addAttribute("album", albumrepository.findAll());
+		model.addAttribute("albums", albumrepository.findAll());
 		return "songlist";
 	}
+	
+	/*
+	//Login mapping for Songdb
+	@RequestMapping(value="/login")
+	public String login() {
+		return "login";
+	}
+	 */
 	
 	//Login mapping for the song database
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
@@ -51,7 +59,7 @@ public class SongController {
 		return songrepository.findById(songId);
 	}
 	
-	//Restful service, Save Book
+	//Restful service, Save Song
 	@RequestMapping(value="/song", method = RequestMethod.POST)
 	public @ResponseBody Song saveSongRest(@RequestBody Song song) {
 		return songrepository.save(song);
@@ -80,8 +88,8 @@ public class SongController {
 		return "editsong";
 	}
 	
-	//Song database deleteBook from database
-	@PreAuthorize("hasAuthority('admin')")
+	//Song database deleteSong from database
+	//@PreAuthorize("hasAuthority('admin')")
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteSong(@PathVariable("id") Long songId, Model model) {
 		songrepository.deleteById(songId);

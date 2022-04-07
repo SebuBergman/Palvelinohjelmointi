@@ -1,4 +1,4 @@
-package hhpalvelinohjelmointi.Songdatabase.domain;
+package hhpalvelinohjelmointi.Songdb.domain;
 
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
