@@ -10,22 +10,28 @@
 	<div>
 		<form th:object="${song}" th:action="@{savesong}" action="#"
 			method="post">
-			<label for="songtitle">Title</label> <input type="text"
+			<label for="songtitle">Song Title</label> <input type="text"
 				id="songtitle" th:field="*{title}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 
-			<label for="genre">Author</label> <input type="text" id="authorname"
+			<label for="genre">Song Genre</label> <input type="text" id="authorname"
 				th:field="*{genre}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 
-			<label for="length">Year</label> <input type="text"
+			<label for="length">Length</label> <input type="text"
 				th:field="*{length}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 
-			<label for="songwriter">ISBN</label> <input type="text"
+			<label for="songwriter">Songwriter / songwriters</label> <input type="text"
 				th:field="*{songwriter}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 
+			<label for="albumlist">Choose album:</label>
+			<select id="albumlist" th:field="*{album}" class="form-control">
+				<option th:each="album: ${albums}" th:value="${album.albumid}" th:text="${album.name}"></option>
+			</select>
+			<div style="clear: both; display: block; height: 10px;"></div>
+				
 			<input type="submit" value="Save" class="btn btn-success"></input>
 		</form>
 		<div style="clear: both; display: block; height: 10px;"></div>

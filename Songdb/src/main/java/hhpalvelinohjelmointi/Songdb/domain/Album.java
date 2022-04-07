@@ -22,9 +22,7 @@ public class Album {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "album")
 	private List<Song> songs;
 
-	public Album() {
-		super();
-	}
+	public Album() {}
 	
 	public Album(String name, String artist, String genre, int releaseyear) {
 		super();
@@ -33,7 +31,7 @@ public class Album {
 		this.genre = genre;
 		this.releaseyear = releaseyear;
 	}
-	
+
 	public Album(Long albumid, String name, String artist, String genre, int releaseyear) {
 		super();
 		this.albumid = albumid;
@@ -42,7 +40,7 @@ public class Album {
 		this.genre = genre;
 		this.releaseyear = releaseyear;
 	}
-	
+
 	public Album(Long albumid, String name, String artist, String genre, int releaseyear, List<Song> songs) {
 		super();
 		this.albumid = albumid;
@@ -57,42 +55,42 @@ public class Album {
 		return albumid;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public String getArtist() {
-		return artist;
-	}
-
-	public String getGenre() {
-		return genre;
-	}
-
-	public int getReleaseyear() {
-		return releaseyear;
-	}
-
 	public void setAlbumid(Long albumid) {
 		this.albumid = albumid;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	public String getArtist() {
+		return artist;
+	}
+
 	public void setArtist(String artist) {
 		this.artist = artist;
+	}
+
+	public String getGenre() {
+		return genre;
 	}
 
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
 
+	public int getReleaseyear() {
+		return releaseyear;
+	}
+
 	public void setReleaseyear(int releaseyear) {
 		this.releaseyear = releaseyear;
 	}
-	
+
 	public List<Song> getSongs() {
 		return songs;
 	}
@@ -104,6 +102,6 @@ public class Album {
 	@Override
 	public String toString() {
 		return "Album [albumid=" + albumid + ", name=" + name + ", artist=" + artist + ", genre=" + genre
-				+ ", releaseyear=" + releaseyear + ", songs=" + songs + "]";
+				+ ", releaseyear=" + releaseyear + "]";
 	}
 }
