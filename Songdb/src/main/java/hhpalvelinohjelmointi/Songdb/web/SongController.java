@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import hhpalvelinohjelmointi.Songdb.domain.Album;
 import hhpalvelinohjelmointi.Songdb.domain.AlbumRepository;
 import hhpalvelinohjelmointi.Songdb.domain.Song;
 import hhpalvelinohjelmointi.Songdb.domain.SongRepository;
@@ -24,19 +25,18 @@ public class SongController {
 	@Autowired
 	AlbumRepository albumrepository;
 	
-	/*
-	//Login mapping for Songdb
-	@RequestMapping(value="/login")
-	public String login() {
-		return "login";
-	}
-	 */
-	
-	//Login mapping for the song database
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String showMainpage(Model model) {
-		return "welcomepage";
-	}
+	//Login and main page
+		//Login mapping for Songdb
+		@RequestMapping(value="/login")
+		public String login() {
+			return "login";
+		}
+		
+		//Login mapping for the song database
+		@RequestMapping(value = "/index", method = RequestMethod.GET)
+		public String showMainpage(Model model) {
+			return "welcome";
+		}
 	
 	//Restful services
 		//Restful service. Show all songs aka FindAll songs
@@ -49,6 +49,12 @@ public class SongController {
 		@RequestMapping(value = "/songs/{id}", method = RequestMethod.GET)
 		public @ResponseBody Optional<Song> findSongRest(@PathVariable("id") Long songId) {
 			return songrepository.findById(songId);
+		}
+		
+		//Restful service for song database, FindById and also get album details
+		@RequestMapping(value = "/songs/{id}/albums", method = RequestMethod.GET)
+		public @ResponseBody Album findSongsandAlbumRest(@PathVariable("id") Long songId) {
+			return songrepository.findById(songId).get().getAlbum();
 		}
 		
 		//Restful service, Save Song

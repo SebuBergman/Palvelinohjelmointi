@@ -11,14 +11,14 @@
 		<div class="col-md-4">
 			<h1>Song database</h1>
 		</div>
-		<!--<div class="col-md-4">
+		<div class="col-md-4">
 			<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
 		</div>
 		<div class="col-md-4" style="padding:20px 0">
 			<form th:action="@{/logout}" method="post">
 				<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
 			</form>
-		</div>-->
+		</div>
 		<table class="table table-striped">
 			<tr>
 				<th>Title</th>
@@ -27,7 +27,7 @@
 				<th>Songwriter</th>
 				<th>Album</th>
 				<th></th>
-				<th> <!---sec:authorize="hasAuthority('ADMIN')"---> </th>
+				<th sec:authorize="hasAuthority('ADMIN')"></th>
 			</tr>
 			<tr th:each="song : ${songs}">
 				<td th:text="${song.title}"></td>
@@ -36,7 +36,7 @@
 				<td th:text="${song.songwriter}"></td>
 				<td th:text="${song.album.name}"></td>
 				<td><a th:href="@{/songedit{id}(id=${song.id})}" class="btn btn-primary">Edit</a></td>
-				<td> <!---sec:authorize="hasAuthority('ADMIN')"---> <a th:href="@{/songdelete/{id}(id=${song.id})}" class="btn btn-xs btn-danger">Delete</a></td>
+				<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/songdelete/{id}(id=${song.id})}" class="btn btn-xs btn-danger">Delete</a></td>
 			</tr>
 		</table>
 		<a href="/addsong" class="btn btn-primary">Add Song</a>

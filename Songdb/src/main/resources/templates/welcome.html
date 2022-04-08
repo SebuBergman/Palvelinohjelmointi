@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" 
-xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <head>
         <title>Song database</title>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+		<link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
     </head>
     <body>
-        <h1>Welcome to the Songlist database</h1>
-
-        <p>Click <a th:href="@{/songlist}">here</a> to see the list of songs</p>
+    	<div class="d-flex justify-content-center">
+	        <h1>Welcome to the Song database</h1>
+	     </div>
+	     <div class="d-flex justify-content-center">
+	        <p>Click <a th:href="@{/listsongs}">here</a> to see the list of songs</p>
+	        <p>Click <a th:href="@{/albumlist}">here</a> to see the list of albums</p>
+        </div>
     </body>
 </html>

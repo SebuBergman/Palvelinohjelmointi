@@ -1,13 +1,13 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Category add</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
-	th:href="@{css/bootstrap.min.css}" />
+	<title>Album add</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+	<link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
 </head>
 <body>
-	<h1>Add Category</h1>
+	<h1>Add Album</h1>
 	<div>
 		<form th:object="${album}" th:action="@{savealbum}" action="#" method="post">
 			<label for="albumname">Name</label> <input type="text" id="albumname" th:field="*{name}" />

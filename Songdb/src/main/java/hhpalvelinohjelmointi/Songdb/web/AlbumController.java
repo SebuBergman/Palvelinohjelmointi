@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import hhpalvelinohjelmointi.Songdb.domain.Album;
 import hhpalvelinohjelmointi.Songdb.domain.AlbumRepository;
+import hhpalvelinohjelmointi.Songdb.domain.Song;
 
 @CrossOrigin
 @Controller
@@ -33,6 +34,12 @@ public class AlbumController {
 		@RequestMapping(value="/albums/{id}", method = RequestMethod.GET)
 		public @ResponseBody Optional<Album> findAlbumRest(@PathVariable("id") Long albumId) {	
 			return albumrepository.findById(albumId);
+		}
+		
+		// RESTful service, Album findById and also get song details
+		@RequestMapping(value="/albums/{id}/songs", method = RequestMethod.GET)
+		public @ResponseBody List<Song> findAlbumandSongsRest(@PathVariable("id") Long albumId) {	
+			return albumrepository.findById(albumId).get().getSongs();
 		}
 			
 		// RESTful service, Save albums
