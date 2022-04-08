@@ -42,9 +42,13 @@ public class BookstoreController {
 	}
 	
 	//Index mainpage/starterpage
-	@RequestMapping(value={"/", "/index"})
-	public String indexSecure() {
-		return "index";
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String showWelcome(Model model) {
+		return "welcome";
+	}
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String showWelcome(Model model) {
+		return "welcome";
 	}
 
 	//Restful service for bookstore, FindAll books
@@ -84,6 +88,7 @@ public class BookstoreController {
 	@RequestMapping(value = "/edit{id}", method = RequestMethod.GET)
 	public String editBook(@PathVariable("id") Long bookId, Model model) {
 		model.addAttribute("book", brepository.findById(bookId));
+		model.addAttribute("categories", crepository.findAll());
 		return "editbook";
 	}
 
